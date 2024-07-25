@@ -1,0 +1,57 @@
+// .add-button-wrapper {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   position: relative;
+// }
+
+// .EdgeAddButton {
+//   .add-button-wrapper {
+//     position: relative;
+    
+//     &::before {
+//       content: '';
+//       position: absolute;
+//       top: 50%;
+//       left: 50%;
+//       transform: translate(-50%, -50%);
+//       width: 32px;  // Slightly larger than the button
+//       height: 32px; // Slightly larger than the button
+//       background-color: white;
+//       border-radius: 50%;
+//       z-index: -1;
+//     }
+//   }
+// }
+
+// .custom-dropdown {
+//   position: absolute;
+//   top: 100%;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   z-index: 1000; // Significantly increase this value
+//   background-color: white;
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//   border-radius: 4px;
+//   margin-top: 8px;
+//   min-width: 120px;
+// }
+
+// .custom-dropdown .ant-menu {
+//   border-radius: 4px;
+// }
+
+// .custom-dropdown .ant-menu-item {
+//   padding: 10px 20px;
+//   font-size: 14px;
+// }
+
+.EdgeAddButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+

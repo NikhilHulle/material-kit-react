@@ -1,20 +1,21 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-
-import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-import Popover from '@mui/material/Popover';
-import TableRow from '@mui/material/TableRow';
+import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
-import MenuItem from '@mui/material/MenuItem';
-import TableCell from '@mui/material/TableCell';
-import Typography from '@mui/material/Typography';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
-
-import Label from 'src/components/label';
+import MenuItem from '@mui/material/MenuItem';
+import Popover from '@mui/material/Popover';
+import Stack from '@mui/material/Stack';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
 import Iconify from 'src/components/iconify';
-
-// ----------------------------------------------------------------------
+import Label from 'src/components/label';
+import FlowEditor from '../../components/reactflow/flow';
 
 export default function UserTableRow({
   selected,
@@ -27,6 +28,7 @@ export default function UserTableRow({
   handleClick,
 }) {
   const [open, setOpen] = useState(null);
+  const [editorOpen, setEditorOpen] = useState(false);
 
   const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
@@ -34,6 +36,15 @@ export default function UserTableRow({
 
   const handleCloseMenu = () => {
     setOpen(null);
+  };
+
+  const handleOpenEditor = () => {
+    setEditorOpen(true);
+    handleCloseMenu();
+  };
+
+  const handleCloseEditor = () => {
+    setEditorOpen(false);
   };
 
   return (
@@ -88,7 +99,20 @@ export default function UserTableRow({
           <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
           Delete
         </MenuItem>
+
+        <MenuItem onClick={handleOpenEditor} sx={{ color: 'error.main' }}>
+          <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
+          Editor
+        </MenuItem>
       </Popover>
+
+      <Dialog open={editorOpen} onClose={handleCloseEditor} fullScreen>
+        <DialogTitle>Rete Editor</DialogTitle>
+        <DialogContent>
+          <FlowEditor />
+        </DialogContent>
+        <Button onClick={handleCloseEditor}>Close</Button>
+      </Dialog>
     </>
   );
 }
